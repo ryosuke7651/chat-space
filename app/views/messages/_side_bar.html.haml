@@ -1,0 +1,20 @@
+.chat-side
+  .chat-side__header
+    .chat-side__header__box
+      %span.name ryosuke
+      %ul.list
+        %li.list__list-icon
+          =link_to "#" do
+            = icon('fas', 'edit')
+        %li.list__list.icon
+          =link_to "#" do
+            = icon('fas', 'cog')
+  .chat-side__groups
+    =link_to "#" do
+      .chat-side__groups__group
+        %p.group-name techcamp
+        %p.group-message まだメッセージがありません
+    =link_to "#" do
+      .chat-side__groups__group
+        %p.group-name aqua
+        %p.group-message まだメッセージがありません
