@@ -23,7 +23,7 @@ Things you may want to cover:
 
 * ...
 
-# ChatSpace DB設計
+#ChatSpace DB設計
 
 ## usersテーブル
 |Column|Type|Options|
@@ -41,7 +41,7 @@ Things you may want to cover:
 |------|----|-------|
 |name|string|null:false, unique:true|
 ### Association
-- has_many :groups_users
+- belongs_to :groups_users
 - has_many :messages
 - has_many :users, through: :groups_users
 
