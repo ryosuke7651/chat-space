@@ -1,24 +1,22 @@
 .main
   .main__header
     .main__header__group
-      %p.group-name Group 
-      %p.member Member :
+      .group-name
+        = @group.name
+      .member
+        Member :
+        - @group.users.each do |user|
+          = user.name
     .main__header__edit
-      =link_to "#" do 
+      =link_to edit_group_path(@group.id), class: "group-edit__btn" do 
         Edit
   .main__contents
-    .main__contents__message
-      %span.username ryosuke
-      %span.time 2020/08/02 02:04:58
-      %p.content Hello
-      %span.username ryosuke
-      %span.time 2020/08/02 02:05:10
-      %p.content Hello
-  .main__footer
-    .main__footer__box
-      %form.new-message
-        %input{type:"text",class:"content-form",placeholder:"type a message"}
-        %label{class:"label"}
-          =icon('far','image')
-          %input{type:"file",class:"file"}
-        %input{type:"submit",class:"submit-btn",value:"Send"}
+    = render @messages
+  .footer
+    = form_with model: [@group, @message], html: {class: "Form"}, local: true do |f|
+      .form-box
+        = f.text_field :content, class: 'form-box__text', placeholder: 'type a message'
+        = f.label :image, class: 'form-box__image' do
+          = icon('far', 'image', class: 'form-box__icon')
+          = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'submit-btn'

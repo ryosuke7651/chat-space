@@ -1,8 +1,8 @@
 .chat-side
   .chat-side__header
     .chat-side__header__box
-      %span.name ryosuke
-      =current_user.name
+      %h3.name
+        = current_user.name
       %ul.list
         %li.list__list-icon
           =link_to new_group_path() do
@@ -12,11 +12,9 @@
             = icon('fas', 'cog')
   .chat-side__groups
     - current_user.groups.each do |group|
-      =link_to "#" do
+      =link_to group_messages_path(group) do
         .chat-side__groups__group
-          %p.group-name techcamp
-          %p.group-message まだメッセージがありません
-      =link_to "#" do
-        .chat-side__groups__group
-          %p.group-name aqua
-          %p.group-message まだメッセージがありません
+          .group-name 
+            = group.name
+          .group-message 
+            = group.show_last_message
